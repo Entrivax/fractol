@@ -6,14 +6,15 @@
 #    By: lpilotto <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/02/22 18:27:38 by lpilotto          #+#    #+#              #
-#    Updated: 2016/02/21 18:28:07 by lpilotto         ###   ########.fr        #
+#    Updated: 2016/02/22 15:48:50 by lpilotto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #OUT=LINUX
 OUT=MAC
 NAME=fdf
-SRC=main.c
+SRC=main.c \
+	imghelper.c
 OBJ=$(subst .c,.o,$(SRC))
 ifeq ($(OUT),MAC)
   LIBXFOLDER=./minilibx_macos

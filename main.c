@@ -6,7 +6,7 @@
 /*   By: lpilotto <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/22 11:48:54 by lpilotto          #+#    #+#             */
-/*   Updated: 2016/02/22 14:29:40 by lpilotto         ###   ########.fr       */
+/*   Updated: 2016/02/22 15:31:35 by lpilotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	print_usage()
 {
 	ft_putstr("Usage : ");
 	ft_putstr(argv[0]);
-	ft_putendl(" [fractales...]");
+	ft_putendl(" <fractales...>");
 	ft_putendl("Fractales: mandelbrot, julia, ");
 }
 
@@ -28,26 +28,32 @@ int		stop_error()
 	return (1);
 }
 
-int		setup(int argc, char **argv, t_env **env)
+void	setup(int argc, char **argv, t_env **env)
 {
 	int		i;
 	void	*mlx;
 
-	i = 0;
+	i = -1;
 	if ((mlx = mlx_init()) == NULL)
-		return (stop_error());
-	while (i < argc - 1)
+		stop_error();
+	mlx_do_key_autorepeaton(mlx);
+	while ((++i) < argc - 1)
 	{
 		if ((env[i] = (t_env *)malloc(sizeof(t_env))) == NULL)
-			return (stop_error());
+			stop_error();
 		env[i]->mlx = mlx;
 		env[i]->win = mlx_new_window(mlx, WIDTH, HEIGHT, argv[i + 1]);
 		env[i]->img = mlx_new_image(mlx, WIDTH, HEIGHT);
 		env[i]->img_writable = mlx_get_data_addr(env[i]->img,
 			&(env[i]->bits_per_pixel), &(env[i]->size_line), &(env[i]->endian));
-		env[i]->fract_type = argv[i + 1];
-		i++;
+		if (ft_strcmp(argv[i + 1], "mandelbrot") == 0)
+			env[i]->fract_type = 0;
+		else if (ft_strcmp(argv[i + 1], "julia") == 0)
+			env[i]->fract_type = 1;
+		mlx_key_hook(env[i]->win, &key_hook, env[i]);
 	}
+	mlx_loop_hook(mlx, &loop_hook, env);
+	mlx_loop(mlx);
 }
 
 int		main(int argc, char **argv)
@@ -64,7 +70,7 @@ int		main(int argc, char **argv)
 	while (i < argc - 1)
 	{
 		ft_tolower(argv[i + 1]);
-		if (!ft_strcmp(argv[i + 1], "mandelbrot") && ft_strcmp(argv[i + 1], "julia"))
+		if (ft_strcmp(argv[i + 1], "mandelbrot") && ft_strcmp(argv[i + 1], "julia"))
 		{
 			print_usage();
 			return (0);
@@ -73,5 +79,6 @@ int		main(int argc, char **argv)
 	}
 	if ((env = (t_env **)malloc(sizeof(t_env *) * (i + 1))) == NULL)
 		return (stop_error());
-	return (setup(argc, argv, env));
+	setup(argc, argv, env);
+	return (0);
 }

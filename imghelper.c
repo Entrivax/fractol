@@ -1,29 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env.h                                              :+:      :+:    :+:   */
+/*   imghelper.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpilotto <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/22 12:01:10 by lpilotto          #+#    #+#             */
-/*   Updated: 2016/02/22 15:06:35 by lpilotto         ###   ########.fr       */
+/*   Created: 2016/01/20 13:56:30 by lpilotto          #+#    #+#             */
+/*   Updated: 2016/01/27 13:07:46 by lpilotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ENV_H
-# define ENV_H
+#include "env.h"
+#include "mlx.h"
 
-typedef	struct s_env	t_env;
-
-struct					s_env {
-	void	*mlx;
-	void	*win;
-	void	*img;
-	char	*img_writable;
-	int		bits_per_pixel;
-	int		size_line;
-	int		endian;
-	int		fract_type;
-};
-
-#endif
+void	pixel_put_img(t_env *env, int x, int y, int rgb_color)
+{
+	if (x >= 0 && x < WIDTH && y >= 0 && y < HEIGHT)
+		(*(unsigned int *)(env->img_writable + x * env->bits_per_pixel / 8 +
+			y * env->size_line)) = mlx_get_color_value(env->mlx, rgb_color);
+}
