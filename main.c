@@ -6,17 +6,19 @@
 /*   By: lpilotto <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/22 11:48:54 by lpilotto          #+#    #+#             */
-/*   Updated: 2016/02/24 15:40:37 by lpilotto         ###   ########.fr       */
+/*   Updated: 2016/02/24 15:52:25 by lpilotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "env.h"
 #include "mlx.h"
 #include "libft.h"
+#include <stdlib.h>
 
-void	print_usage()
+void	print_usage(char *procname)
 {
 	ft_putstr("Usage : ");
-	ft_putstr(argv[0]);
+	ft_putstr(procname);
 	ft_putendl(" <fractales...>");
 	ft_putendl("Fractales: mandelbrot, julia, ");
 }
@@ -70,16 +72,16 @@ int		main(int argc, char **argv)
 
 	if (argc == 1)
 	{
-		print_usage();
+		print_usage(argv[0]);
 		return (0);
 	}
 	i = 0;
 	while (i < argc - 1)
 	{
-		ft_tolower(argv[i + 1]);
+		ft_strtolower(argv[i + 1]);
 		if (ft_strcmp(argv[i + 1], "mandelbrot") && ft_strcmp(argv[i + 1], "julia"))
 		{
-			print_usage();
+			print_usage(argv[0]);
 			return (0);
 		}
 		i++;
