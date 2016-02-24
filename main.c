@@ -6,7 +6,7 @@
 /*   By: lpilotto <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/22 11:48:54 by lpilotto          #+#    #+#             */
-/*   Updated: 2016/02/22 15:31:35 by lpilotto         ###   ########.fr       */
+/*   Updated: 2016/02/24 14:33:04 by lpilotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,10 @@ void	setup(int argc, char **argv, t_env **env)
 		if ((env[i] = (t_env *)malloc(sizeof(t_env))) == NULL)
 			stop_error();
 		env[i]->mlx = mlx;
-		env[i]->win = mlx_new_window(mlx, WIDTH, HEIGHT, argv[i + 1]);
-		env[i]->img = mlx_new_image(mlx, WIDTH, HEIGHT);
+		env[i]->width = 200;
+		env[i]->height = 200;
+		env[i]->win = mlx_new_window(mlx, env[i]->width, env[i]->height, argv[i + 1]);
+		env[i]->img = mlx_new_image(mlx, env[i]->width, env[i]->height);
 		env[i]->img_writable = mlx_get_data_addr(env[i]->img,
 			&(env[i]->bits_per_pixel), &(env[i]->size_line), &(env[i]->endian));
 		if (ft_strcmp(argv[i + 1], "mandelbrot") == 0)

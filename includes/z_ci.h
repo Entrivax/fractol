@@ -1,34 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env.h                                              :+:      :+:    :+:   */
+/*   z_ci.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpilotto <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/22 12:01:10 by lpilotto          #+#    #+#             */
-/*   Updated: 2016/02/24 14:46:39 by lpilotto         ###   ########.fr       */
+/*   Created: 2016/02/24 14:14:03 by lpilotto          #+#    #+#             */
+/*   Updated: 2016/02/24 14:17:13 by lpilotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ENV_H
-# define ENV_H
+#ifndef Z_CI_H
+# define Z_CI_H
 
-typedef	struct s_env	t_env;
+typedef struct s_z_ci	t_z_ci;
 
-struct					s_env {
-	void	*mlx;
-	void	*win;
-	void	*img;
-	char	*img_writable;
-	int		width;
-	int		height;
-	int		bits_per_pixel;
-	int		size_line;
-	int		endian;
-	int		fract_type;
-	double	zoom;
-	double	offsetx;
-	double	offsety;
+struct					s_z_ci {
+	double	c_r;
+	double	c_i;
+	double	z_r;
+	double	z_i;
 };
 
 #endif

@@ -6,7 +6,7 @@
 #    By: lpilotto <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/02/22 18:27:38 by lpilotto          #+#    #+#              #
-#    Updated: 2016/02/22 15:48:50 by lpilotto         ###   ########.fr        #
+#    Updated: 2016/02/24 14:52:40 by lpilotto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,8 @@
 OUT=MAC
 NAME=fdf
 SRC=main.c \
-	imghelper.c
+	imghelper.c \
+	mandelbrot.c
 OBJ=$(subst .c,.o,$(SRC))
 ifeq ($(OUT),MAC)
   LIBXFOLDER=./minilibx_macos

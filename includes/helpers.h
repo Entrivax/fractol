@@ -1,34 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env.h                                              :+:      :+:    :+:   */
+/*   helpers.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpilotto <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/22 12:01:10 by lpilotto          #+#    #+#             */
-/*   Updated: 2016/02/24 14:46:39 by lpilotto         ###   ########.fr       */
+/*   Created: 2016/02/24 14:29:54 by lpilotto          #+#    #+#             */
+/*   Updated: 2016/02/24 14:30:39 by lpilotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ENV_H
-# define ENV_H
+#ifndef HELPERS_H
+# define HELPERS_H
 
-typedef	struct s_env	t_env;
-
-struct					s_env {
-	void	*mlx;
-	void	*win;
-	void	*img;
-	char	*img_writable;
-	int		width;
-	int		height;
-	int		bits_per_pixel;
-	int		size_line;
-	int		endian;
-	int		fract_type;
-	double	zoom;
-	double	offsetx;
-	double	offsety;
-};
+void    pixel_put_img(t_env *env, int x, int y, int rgb_color);
 
 #endif
