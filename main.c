@@ -6,7 +6,7 @@
 /*   By: lpilotto <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/22 11:48:54 by lpilotto          #+#    #+#             */
-/*   Updated: 2016/02/24 14:33:04 by lpilotto         ###   ########.fr       */
+/*   Updated: 2016/02/24 15:40:37 by lpilotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,22 @@ int		stop_error()
 	return (1);
 }
 
+void	init_env(void *mlx, t_env *env, char *fract)
+{
+	env->mlx = mlx;
+	env->width = 200;
+	env->height = 200;
+	env->win = mlx_new_window(mlx, env->width, env->height, fract);
+	env->img = mlx_new_image(mlx, env->width, env->height);
+	env->img_writable = mlx_get_data_addr(env->img,
+		&(env->bits_per_pixel), &(env->size_line), &(env->endian));
+	if (ft_strcmp(fract, "mandelbrot") == 0)
+		env->fract_type = 0;
+	else if (ft_strcmp(fract, "julia") == 0)
+		env->fract_type = 1;
+	mlx_key_hook(env->win, &key_hook, env);
+}
+
 void	setup(int argc, char **argv, t_env **env)
 {
 	int		i;
@@ -41,18 +57,7 @@ void	setup(int argc, char **argv, t_env **env)
 	{
 		if ((env[i] = (t_env *)malloc(sizeof(t_env))) == NULL)
 			stop_error();
-		env[i]->mlx = mlx;
-		env[i]->width = 200;
-		env[i]->height = 200;
-		env[i]->win = mlx_new_window(mlx, env[i]->width, env[i]->height, argv[i + 1]);
-		env[i]->img = mlx_new_image(mlx, env[i]->width, env[i]->height);
-		env[i]->img_writable = mlx_get_data_addr(env[i]->img,
-			&(env[i]->bits_per_pixel), &(env[i]->size_line), &(env[i]->endian));
-		if (ft_strcmp(argv[i + 1], "mandelbrot") == 0)
-			env[i]->fract_type = 0;
-		else if (ft_strcmp(argv[i + 1], "julia") == 0)
-			env[i]->fract_type = 1;
-		mlx_key_hook(env[i]->win, &key_hook, env[i]);
+		init_env(mlx, env[i], argv[i + 1]);
 	}
 	mlx_loop_hook(mlx, &loop_hook, env);
 	mlx_loop(mlx);
