@@ -6,13 +6,14 @@
 /*   By: lpilotto <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/22 11:48:54 by lpilotto          #+#    #+#             */
-/*   Updated: 2016/02/24 15:52:25 by lpilotto         ###   ########.fr       */
+/*   Updated: 2016/02/25 13:18:54 by lpilotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "env.h"
 #include "mlx.h"
 #include "libft.h"
+#include "hooks.h"
 #include <stdlib.h>
 
 void	print_usage(char *procname)
@@ -33,8 +34,11 @@ int		stop_error()
 void	init_env(void *mlx, t_env *env, char *fract)
 {
 	env->mlx = mlx;
-	env->width = 200;
-	env->height = 200;
+	env->width = 1000;
+	env->height = 1000;
+	env->zoom = 200;
+	env->offsetx = 0;
+	env->offsety = 0;
 	env->win = mlx_new_window(mlx, env->width, env->height, fract);
 	env->img = mlx_new_image(mlx, env->width, env->height);
 	env->img_writable = mlx_get_data_addr(env->img,
@@ -88,6 +92,7 @@ int		main(int argc, char **argv)
 	}
 	if ((env = (t_env **)malloc(sizeof(t_env *) * (i + 1))) == NULL)
 		return (stop_error());
+	env[i] = NULL;
 	setup(argc, argv, env);
 	return (0);
 }

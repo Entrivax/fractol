@@ -1,34 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env.h                                              :+:      :+:    :+:   */
+/*   key_hook.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpilotto <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/22 12:01:10 by lpilotto          #+#    #+#             */
-/*   Updated: 2016/02/25 12:43:50 by lpilotto         ###   ########.fr       */
+/*   Created: 2016/02/25 12:03:36 by lpilotto          #+#    #+#             */
+/*   Updated: 2016/02/25 13:32:20 by lpilotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ENV_H
-# define ENV_H
+#include "env.h"
+#include "libft.h"
 
-typedef	struct s_env	t_env;
+int		key_hook(int keycode, void *param)
+{
+	t_env	*env;
 
-struct					s_env {
-	void	*mlx;
-	void	*win;
-	void	*img;
-	char	*img_writable;
-	double	width;
-	double	height;
-	int		bits_per_pixel;
-	int		size_line;
-	int		endian;
-	int		fract_type;
-	double	zoom;
-	double	offsetx;
-	double	offsety;
-};
-
-#endif
+	env = param;
+	ft_putnbrendl(keycode);
+	if (keycode == 126)
+		env->zoom++;
+	else if (keycode == 125)
+		env->zoom--;
+	return (1);
+}

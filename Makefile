@@ -6,16 +6,18 @@
 #    By: lpilotto <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/02/22 18:27:38 by lpilotto          #+#    #+#              #
-#    Updated: 2016/02/24 14:52:40 by lpilotto         ###   ########.fr        #
+#    Updated: 2016/02/25 12:11:25 by lpilotto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #OUT=LINUX
 OUT=MAC
-NAME=fdf
+NAME=fractol
 SRC=main.c \
 	imghelper.c \
-	mandelbrot.c
+	mandelbrot.c \
+	key_hook.c \
+	loop_hook.c
 OBJ=$(subst .c,.o,$(SRC))
 ifeq ($(OUT),MAC)
   LIBXFOLDER=./minilibx_macos
