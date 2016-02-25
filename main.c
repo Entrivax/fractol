@@ -6,7 +6,7 @@
 /*   By: lpilotto <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/22 11:48:54 by lpilotto          #+#    #+#             */
-/*   Updated: 2016/02/25 13:18:54 by lpilotto         ###   ########.fr       */
+/*   Updated: 2016/02/25 14:00:15 by lpilotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	init_env(void *mlx, t_env *env, char *fract)
 	env->mlx = mlx;
 	env->width = 1000;
 	env->height = 1000;
-	env->zoom = 200;
+	env->zoom = 1;
 	env->offsetx = 0;
 	env->offsety = 0;
 	env->win = mlx_new_window(mlx, env->width, env->height, fract);

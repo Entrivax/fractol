@@ -6,7 +6,7 @@
 /*   By: lpilotto <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/24 12:03:31 by lpilotto          #+#    #+#             */
-/*   Updated: 2016/02/25 13:33:40 by lpilotto         ###   ########.fr       */
+/*   Updated: 2016/02/25 14:14:05 by lpilotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 #include "helpers.h"
 #include "libft.h"
 
-#include <stdio.h>
 void	draw_mandelbrot_pixel(t_env *env, int x, int y)
 {
 	t_z_ci	z_ci;
@@ -24,8 +23,8 @@ void	draw_mandelbrot_pixel(t_env *env, int x, int y)
 
 	/*z_ci.c_r = 2.7 * x / (env->width);
 	z_ci.c_i = 2.4 * y / (env->height);*/
-	z_ci.c_r = x / (env->zoom);
-	z_ci.c_i = y / (env->zoom);
+	z_ci.c_r = 2.7 * x / (env->width * env->zoom) - 2.1;
+	z_ci.c_i = 2.4 * y / (env->height * env->zoom) - 1.2;
 	z_ci.z_r = 0;
 	z_ci.z_i = 0;
 	i = 0;
@@ -37,8 +36,8 @@ void	draw_mandelbrot_pixel(t_env *env, int x, int y)
 		i++;
 	}
 	if (i == 200)
-		pixel_put_img(env, x, y, (int)(z_ci.z_r * 10000 * 0x1000 + z_ci.z_i * 10000 * 0x100));
-		/*pixel_put_img(env, x, y, 0xFFFFFF);*/
+		/*pixel_put_img(env, x, y, (int)(z_ci.z_r * 10000 * 0x1000 + z_ci.z_i * 10000 * 0x100));*/
+		pixel_put_img(env, x, y, 0xFFFFFF);
 }
 
 void	draw_mandelbrot(t_env *env)
