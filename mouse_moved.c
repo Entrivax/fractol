@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   key_hook.c                                         :+:      :+:    :+:   */
+/*   mouse_moved.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpilotto <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/25 12:03:36 by lpilotto          #+#    #+#             */
-/*   Updated: 2016/03/02 13:50:22 by lpilotto         ###   ########.fr       */
+/*   Created: 2016/03/02 13:15:03 by lpilotto          #+#    #+#             */
+/*   Updated: 2016/03/02 13:46:47 by lpilotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "env.h"
-#include "libft.h"
 
-
-#include <stdio.h>
-int		key_hook(int keycode, void *param)
+int		mouse_moved(int x, int y, void *param)
 {
-	t_env	*env;
+	t_env *env;
 
 	env = param;
-	ft_putnbrendl(keycode);
-	if (keycode == 126)
-		env->zoom *= 1.2f;
-	else if (keycode == 125)
-		env->zoom /= 1.2f;
-	printf("zoom: %lf\n", env->zoom);
-	return (1);
+	env->mouse_x = x;
+	env->mouse_y = y;
+	return (0);
 }

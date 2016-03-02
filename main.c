@@ -6,7 +6,7 @@
 /*   By: lpilotto <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/22 11:48:54 by lpilotto          #+#    #+#             */
-/*   Updated: 2016/02/25 14:00:15 by lpilotto         ###   ########.fr       */
+/*   Updated: 2016/03/02 13:45:22 by lpilotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	print_usage(char *procname)
 	ft_putendl("Fractales: mandelbrot, julia, ");
 }
 
-int		stop_error()
+int		stop_error(void)
 {
 	ft_putendl("error");
 	exit(1);
@@ -48,6 +48,7 @@ void	init_env(void *mlx, t_env *env, char *fract)
 	else if (ft_strcmp(fract, "julia") == 0)
 		env->fract_type = 1;
 	mlx_key_hook(env->win, &key_hook, env);
+	mlx_hook(env->win, 6, (1L<<6), mouse_moved, env);
 }
 
 void	setup(int argc, char **argv, t_env **env)
@@ -83,7 +84,8 @@ int		main(int argc, char **argv)
 	while (i < argc - 1)
 	{
 		ft_strtolower(argv[i + 1]);
-		if (ft_strcmp(argv[i + 1], "mandelbrot") && ft_strcmp(argv[i + 1], "julia"))
+		if (ft_strcmp(argv[i + 1], "mandelbrot")
+			&& ft_strcmp(argv[i + 1], "julia"))
 		{
 			print_usage(argv[0]);
 			return (0);

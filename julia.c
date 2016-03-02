@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mandelbrot.c                                       :+:      :+:    :+:   */
+/*   julia.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpilotto <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/24 12:03:31 by lpilotto          #+#    #+#             */
-/*   Updated: 2016/03/02 12:36:33 by lpilotto         ###   ########.fr       */
+/*   Updated: 2016/03/02 13:47:26 by lpilotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,20 @@
 #include "z_ci.h"
 #include "helpers.h"
 #include "libft.h"
+#include "vector2.h"
 
-void	draw_mandelbrot_pixel(t_env *env, int x, int y)
+void	draw_julia_pixel(t_env *env, int x, int y, t_vector2 c)
 {
 	t_z_ci	a;
 	int		i;
 	double	tmp;
 
-	a.c_r = x / (env->width / (0.6 - -2.1) * env->zoom) + -2.1;
-	a.c_i = y / (env->height / (1.2 - -1.2) * env->zoom) + -1.2;
-	a.z_r = 0;
-	a.z_i = 0;
+	a.c_r = c.x;
+	a.c_i = c.y;
+	a.z_r = x / env->zoom;
+	a.z_i = y / env->zoom;
 	i = 0;
-	while ((a.z_r * a.z_r) + (a.z_i * a.z_i) < 4 && i < 50)
+	while ((a.z_r * a.z_r) + (a.z_i * a.z_i) <= 4 && i < 50)
 	{
 		tmp = a.z_r;
 		a.z_r = a.z_r * a.z_r - a.z_i * a.z_i + a.c_r;
@@ -39,7 +40,7 @@ void	draw_mandelbrot_pixel(t_env *env, int x, int y)
 		pixel_put_img(env, x, y, i * 50);
 }
 
-void	draw_mandelbrot(t_env *env)
+void	draw_julia(t_env *env, t_vector2 c)
 {
 	int x;
 	int y;
@@ -50,7 +51,7 @@ void	draw_mandelbrot(t_env *env)
 		y = 0;
 		while (y < env->height)
 		{
-			draw_mandelbrot_pixel(env, x, y);
+			draw_julia_pixel(env, x, y, c);
 			y++;
 		}
 		x++;

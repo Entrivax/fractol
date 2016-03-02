@@ -6,7 +6,7 @@
 /*   By: lpilotto <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/22 12:01:10 by lpilotto          #+#    #+#             */
-/*   Updated: 2016/02/25 12:43:50 by lpilotto         ###   ########.fr       */
+/*   Updated: 2016/03/02 13:17:53 by lpilotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ struct					s_env {
 	double	zoom;
 	double	offsetx;
 	double	offsety;
+	int		mouse_x;
+	int		mouse_y;
 };
 
 #endif

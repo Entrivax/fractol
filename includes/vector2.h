@@ -1,30 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   key_hook.c                                         :+:      :+:    :+:   */
+/*   vector2.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpilotto <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/25 12:03:36 by lpilotto          #+#    #+#             */
-/*   Updated: 2016/03/02 13:50:22 by lpilotto         ###   ########.fr       */
+/*   Created: 2016/03/02 12:01:58 by lpilotto          #+#    #+#             */
+/*   Updated: 2016/03/02 12:13:10 by lpilotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "env.h"
-#include "libft.h"
+#ifndef VECTOR2_H
+# define VECTOR2_H
 
+typedef struct s_vector2	t_vector2;
 
-#include <stdio.h>
-int		key_hook(int keycode, void *param)
+struct						s_vector2
 {
-	t_env	*env;
+	double	x;
+	double	y;
+};
 
-	env = param;
-	ft_putnbrendl(keycode);
-	if (keycode == 126)
-		env->zoom *= 1.2f;
-	else if (keycode == 125)
-		env->zoom /= 1.2f;
-	printf("zoom: %lf\n", env->zoom);
-	return (1);
-}
+#endif
