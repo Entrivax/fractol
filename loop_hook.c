@@ -6,7 +6,7 @@
 /*   By: lpilotto <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/25 11:51:19 by lpilotto          #+#    #+#             */
-/*   Updated: 2016/03/02 19:58:33 by lpilotto         ###   ########.fr       */
+/*   Updated: 2016/03/02 23:02:03 by lpilotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ int		loop_hook(void *param)
 				draw_mandelbrot(*env);
 			if ((*env)->fract_type == 1)
 			{
-				c.x = (*env)->mouse_x / 100.f;
-				c.y = (*env)->mouse_y / 100.f;
+				c.x = (*env)->mouse_x / 1000.f;
+				c.y = (*env)->mouse_y / 1000.f;
 				draw_julia(*env, c);
 			}
 			clear_win(*env);

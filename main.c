@@ -6,7 +6,7 @@
 /*   By: lpilotto <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/22 11:48:54 by lpilotto          #+#    #+#             */
-/*   Updated: 2016/03/02 19:53:56 by lpilotto         ###   ########.fr       */
+/*   Updated: 2016/03/02 22:59:27 by lpilotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	init_env(void *mlx, t_env *env, char *fract)
 		env->fract_type = 1;
 	mlx_key_hook(env->win, &key_hook, env);
 	mlx_hook(env->win, 6, (1L<<6), &mouse_moved, env);
-	//mlx_expose_hook(env->win, &expose_hook, env);
+	mlx_expose_hook(env->win, &expose_hook, env);
 }
 
 void	setup(int argc, char **argv, t_env **env)
