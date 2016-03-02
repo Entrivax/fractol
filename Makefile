@@ -6,12 +6,12 @@
 #    By: lpilotto <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/02/22 18:27:38 by lpilotto          #+#    #+#              #
-#    Updated: 2016/03/02 13:18:18 by lpilotto         ###   ########.fr        #
+#    Updated: 2016/03/02 19:40:32 by lpilotto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-#OUT=LINUX
-OUT=MAC
+OUT=LINUX
+#OUT=MAC
 NAME=fractol
 SRC=main.c \
 	imghelper.c \
@@ -19,6 +19,7 @@ SRC=main.c \
 	julia.c \
 	key_hook.c \
 	loop_hook.c \
+	expose_hook.c \
 	mouse_moved.c
 OBJ=$(subst .c,.o,$(SRC))
 ifeq ($(OUT),MAC)

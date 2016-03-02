@@ -6,7 +6,7 @@
 /*   By: lpilotto <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 13:15:03 by lpilotto          #+#    #+#             */
-/*   Updated: 2016/03/02 13:46:47 by lpilotto         ###   ########.fr       */
+/*   Updated: 2016/03/02 19:46:00 by lpilotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,7 @@ int		mouse_moved(int x, int y, void *param)
 	env = param;
 	env->mouse_x = x;
 	env->mouse_y = y;
+	if (env->fract_type == 1)
+		env->need_rewrite = 1;
 	return (0);
 }

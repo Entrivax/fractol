@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hooks.h                                            :+:      :+:    :+:   */
+/*   expose_hook.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpilotto <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lpilotto <lpilotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/25 12:07:33 by lpilotto          #+#    #+#             */
-/*   Updated: 2016/03/02 19:40:14 by lpilotto         ###   ########.fr       */
+/*   Created: 2016/03/02 19:34:15 by lpilotto          #+#    #+#             */
+/*   Updated: 2016/03/02 19:38:27 by lpilotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HOOKS_H
-# define HOOKS_H
+#include "env.h"
+#include "mlx.h"
 
-int		key_hook(int keycode, void *param);
-int		loop_hook(void *param);
-int		expose_hook(void *param);
-int		mouse_moved(int x, int y, void *param);
+int		expose_hook(void *param)
+{
+	t_env	*env;
 
-#endif
+	env = (t_env *)param;
+	mlx_put_image_to_window(env->mlx, env->win, env->img, 0, 0);
+	return (1);
+}

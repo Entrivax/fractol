@@ -6,7 +6,7 @@
 /*   By: lpilotto <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/22 12:01:10 by lpilotto          #+#    #+#             */
-/*   Updated: 2016/03/02 13:17:53 by lpilotto         ###   ########.fr       */
+/*   Updated: 2016/03/02 19:47:36 by lpilotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ struct					s_env {
 	char	*img_writable;
 	double	width;
 	double	height;
+	char	need_rewrite;
 	int		bits_per_pixel;
 	int		size_line;
 	int		endian;

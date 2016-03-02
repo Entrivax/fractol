@@ -6,15 +6,13 @@
 /*   By: lpilotto <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/27 16:42:53 by lpilotto          #+#    #+#             */
-/*   Updated: 2015/11/27 16:47:55 by lpilotto         ###   ########.fr       */
+/*   Updated: 2016/03/02 19:15:52 by lpilotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_toupper(int c)
 {
-	unsigned char ch;
 
-	ch = (unsigned char)c;
 	if (c >= 'a' && c <= 'z')
 		return ((int)(c - 'a' + 'A'));
 	return (c);
