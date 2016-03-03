@@ -6,13 +6,13 @@
 /*   By: lpilotto <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/25 12:03:36 by lpilotto          #+#    #+#             */
-/*   Updated: 2016/03/02 19:56:53 by lpilotto         ###   ########.fr       */
+/*   Updated: 2016/03/03 09:06:21 by lpilotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "env.h"
 #include "libft.h"
-
+#include <stdlib.h>
 
 #include <stdio.h>
 int		key_hook(int keycode, void *param)
@@ -25,6 +25,8 @@ int		key_hook(int keycode, void *param)
 		env->zoom *= 1.2f;
 	else if (keycode == 125 || keycode == 65364)
 		env->zoom /= 1.2f;
+	else if (keycode == 65307)
+		exit(0);
 	if (keycode == 126 || keycode == 65362 || keycode == 125 || keycode == 65364)
 		env->need_rewrite = 1;
 	printf("zoom: %lf\n", env->zoom);

@@ -6,7 +6,7 @@
 /*   By: lpilotto <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/25 11:51:19 by lpilotto          #+#    #+#             */
-/*   Updated: 2016/03/02 23:02:03 by lpilotto         ###   ########.fr       */
+/*   Updated: 2016/03/03 17:10:59 by lpilotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,20 @@
 #include "fractals.h"
 #include "vector2.h"
 
+void	loop_hook_next(t_env *env)
+{
+	if (env->fract_type == 2)
+	{
+		draw_burningship(env);
+	}
+}
+
 int		loop_hook(void *param)
 {
 	t_env		**env;
 	t_vector2	c;
 
 	env = (t_env **)param;
-	c.x = .3;
-	c.y = .5;
 	while (*env)
 	{
 		if ((*env)->need_rewrite)
@@ -31,12 +37,14 @@ int		loop_hook(void *param)
 			(*env)->need_rewrite = 0;
 			if ((*env)->fract_type == 0)
 				draw_mandelbrot(*env);
-			if ((*env)->fract_type == 1)
+			else if ((*env)->fract_type == 1)
 			{
 				c.x = (*env)->mouse_x / 1000.f;
 				c.y = (*env)->mouse_y / 1000.f;
 				draw_julia(*env, c);
 			}
+			else
+				loop_hook_next(*env);
 			clear_win(*env);
 			mlx_put_image_to_window((*env)->mlx, (*env)->win, (*env)->img, 0, 0);
 		}

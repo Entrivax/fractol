@@ -6,7 +6,7 @@
 /*   By: lpilotto <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/24 15:08:34 by lpilotto          #+#    #+#             */
-/*   Updated: 2016/03/02 12:12:36 by lpilotto         ###   ########.fr       */
+/*   Updated: 2016/03/03 17:10:32 by lpilotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,6 @@
 
 void	draw_mandelbrot(t_env *env);
 void	draw_julia(t_env *env, t_vector2 c);
+void	draw_burningship(t_env *env);
 
 #endif
