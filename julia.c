@@ -6,7 +6,7 @@
 /*   By: lpilotto <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/24 12:03:31 by lpilotto          #+#    #+#             */
-/*   Updated: 2016/03/03 15:04:45 by lpilotto         ###   ########.fr       */
+/*   Updated: 2016/03/04 11:54:56 by lpilotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	draw_julia_pixel(t_env *env, int x, int y, t_vector2 c)
 	a.c_r = c.x;
 	a.c_i = c.y;
 	a.z_r = x / (env->width / (0.6 - -2.1) * env->zoom) + -2.1 + env->offsetx;
-	a.z_i = y / (env->height / (1.2 - -1.2) * env->zoom) + -1.2+ env->offsety;
+	a.z_i = y / (env->height / (1.2 - -1.2) * env->zoom) + -1.2 + env->offsety;
 	i = 0;
 	while ((a.z_r * a.z_r) + (a.z_i * a.z_i) <= 4 && i < 200)
 	{

@@ -6,7 +6,7 @@
 /*   By: lpilotto <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/22 11:48:54 by lpilotto          #+#    #+#             */
-/*   Updated: 2016/03/03 17:11:34 by lpilotto         ###   ########.fr       */
+/*   Updated: 2016/03/04 11:55:05 by lpilotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	init_env(void *mlx, t_env *env, char *fract)
 	else if (ft_strcmp(fract, "burningship") == 0)
 		env->fract_type = 2;
 	mlx_key_hook(env->win, &key_hook, env);
-	mlx_hook(env->win, 6, (1L<<6), &mouse_moved, env);
+	mlx_hook(env->win, 6, (1L << 6), &mouse_moved, env);
 	mlx_expose_hook(env->win, &expose_hook, env);
 	mlx_mouse_hook(env->win, &mouse_hook, env);
 }

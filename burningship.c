@@ -6,7 +6,7 @@
 /*   By: lpilotto <lpilotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/03 16:43:27 by lpilotto          #+#    #+#             */
-/*   Updated: 2016/03/03 17:23:11 by lpilotto         ###   ########.fr       */
+/*   Updated: 2016/03/04 11:54:20 by lpilotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	draw_burningship_pixel(t_env *env, int x, int y)
 		tmp.z_i = 2 * ft_fabs(a.z_r * a.z_i) - a.c_i;
 		a = tmp;
 		if (a.z_r * a.z_r + a.z_i * a.z_i > 10)
-			break;
+			break ;
 		i++;
 	}
 	pixel_put_img(env, x, y, (i * 255 / 200 << 8) + (i * 255 / 200 << 16)
