@@ -6,12 +6,12 @@
 #    By: lpilotto <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/02/22 18:27:38 by lpilotto          #+#    #+#              #
-#    Updated: 2016/03/03 17:10:04 by lpilotto         ###   ########.fr        #
+#    Updated: 2016/03/04 11:48:13 by lpilotto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-OUT=LINUX
-#OUT=MAC
+#OUT=LINUX
+OUT=MAC
 NAME=fractol
 SRC=main.c \
 	imghelper.c \

@@ -6,7 +6,7 @@
 /*   By: lpilotto <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/25 12:03:36 by lpilotto          #+#    #+#             */
-/*   Updated: 2016/03/03 19:52:19 by lpilotto         ###   ########.fr       */
+/*   Updated: 2016/03/04 11:52:37 by lpilotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ int		key_hook(int keycode, void *param)
 		env->offsety -= .2 / env->zoom;
 	else if (keycode == 65364)
 		env->offsety += .2 / env->zoom;
-	if (keycode == 65451 || keycode == 65362 || keycode == 65453 || keycode == 65364 || keycode == 65361 || keycode == 65363)
+	if (keycode == 65451 || keycode == 65362 || keycode == 65453
+		|| keycode == 65364 || keycode == 65361 || keycode == 65363)
 		env->need_rewrite = 1;
 	return (1);
 }
@@ -60,9 +61,9 @@ int		key_hook(int keycode, void *param)
 	else if (keycode == 124)
 		env->offsetx += .2 / env->zoom;
 	else if (keycode == 125)
-		env->offsety -= .2 / env->zoom;
-	else if (keycode == 126)
 		env->offsety += .2 / env->zoom;
+	else if (keycode == 126)
+		env->offsety -= .2 / env->zoom;
 	if (keycode == 126 || keycode == 125 || keycode == 123 ||
 		keycode == 124 || keycode == 69 || keycode == 78)
 		env->need_rewrite = 1;
