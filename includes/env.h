@@ -6,12 +6,14 @@
 /*   By: lpilotto <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/22 12:01:10 by lpilotto          #+#    #+#             */
-/*   Updated: 2016/03/02 19:47:36 by lpilotto         ###   ########.fr       */
+/*   Updated: 2016/03/04 12:14:04 by lpilotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ENV_H
 # define ENV_H
+
+# define ITERATIONS_MAX 200
 
 typedef	struct s_env	t_env;
 

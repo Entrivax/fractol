@@ -6,7 +6,7 @@
 /*   By: lpilotto <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/24 12:03:31 by lpilotto          #+#    #+#             */
-/*   Updated: 2016/03/03 14:56:56 by lpilotto         ###   ########.fr       */
+/*   Updated: 2016/03/04 12:12:50 by lpilotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,17 @@ void	draw_mandelbrot_pixel(t_env *env, int x, int y)
 	a.z_r = 0;
 	a.z_i = 0;
 	i = 0;
-	while ((a.z_r * a.z_r) + (a.z_i * a.z_i) < 4 && i < 200)
+	while ((a.z_r * a.z_r) + (a.z_i * a.z_i) < 4 && i < ITERATIONS_MAX)
 	{
 		tmp = a.z_r;
 		a.z_r = a.z_r * a.z_r - a.z_i * a.z_i + a.c_r;
 		a.z_i = 2 * a.z_i * tmp + a.c_i;
 		i++;
 	}
-	if (i == 200)
+	if (i == ITERATIONS_MAX)
 		pixel_put_img(env, x, y, 0x0);
 	else
-		pixel_put_img(env, x, y, i * 0xcd8bd4 / 200);
+		pixel_put_img(env, x, y, i * 0xcd8bd4 / ITERATIONS_MAX);
 }
 
 void	draw_mandelbrot(t_env *env)
